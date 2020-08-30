@@ -1,15 +1,10 @@
 package com.polarbookshop.catalogservice.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import java.time.Year;
 
-@Data
-@AllArgsConstructor
 public class Book {
     @NotBlank(message = "The book ISBN must be defined.")
     @Pattern(regexp = "^(97([89]))?\\d{9}(\\d|X)$", message = "The ISBN format must follow the standards ISBN-10 or ISBN-13.")
@@ -23,4 +18,46 @@ public class Book {
 
     @PastOrPresent(message = "The book can't have been published in the future.")
     private Year publishingYear;
+
+    public Book() {
+    }
+
+    public Book(@NotBlank(message = "The book ISBN must be defined.") @Pattern(regexp = "^(97([89]))?\\d{9}(\\d|X)$", message = "The ISBN format must follow the standards ISBN-10 or ISBN-13.") String isbn, @NotBlank(message = "The book title must be defined.") String title, @NotBlank(message = "The book author must be defined.") String author, @PastOrPresent(message = "The book can't have been published in the future.") Year publishingYear) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publishingYear = publishingYear;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Year getPublishingYear() {
+        return publishingYear;
+    }
+
+    public void setPublishingYear(Year publishingYear) {
+        this.publishingYear = publishingYear;
+    }
 }
