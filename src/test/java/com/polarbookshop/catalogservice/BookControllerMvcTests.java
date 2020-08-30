@@ -32,6 +32,6 @@ public class BookControllerMvcTests {
 
         mockMvc.perform(get("/books/" + isbn).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
-                .andExpect(content().string("The book with ISBN " + isbn + " was not found."));
+                .andExpect(content().string("The book with ISBN " + isbn + " was not found"));
     }
 }
