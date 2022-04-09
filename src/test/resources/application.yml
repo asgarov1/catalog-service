@@ -1,9 +1,8 @@
 spring:
   datasource:
     url: jdbc:tc:postgresql:14.1:///
+  flyway:
+    validate-on-migrate: true
   cloud:
     config:
       enabled: false
-  sql:
-    init:
-      mode: always
